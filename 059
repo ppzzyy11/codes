@@ -1,0 +1,41 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        vector<vector<int>> matrix(n,vector<int>(n,-1));
+        if(n==0) return matrix;
+        int up=0,left=0,down=n-1,right=n-1;
+        int x=0,y=0;
+        int num=1;
+        while(1)
+        {
+            for(x=up,y=left;y<=right;y++)
+            {
+                matrix[x][y]=num++;
+            }
+            up++;
+            if(up>down) break;
+
+            for(x=up,y=right;x<=down;x++)
+            {
+                matrix[x][y]=num++;
+            }
+            right--;
+            if(left>right) break;
+
+            for(x=down,y=right;y>=left;y--)
+            {
+                matrix[x][y]=num++;
+            }
+            down--;
+            if(up>down) break;
+
+            for(x=down,y=left;x>=up;x--)
+            {
+                matrix[x][y]=num++;
+            }
+            left++;
+            if(left>right) break;
+        }
+        return matrix;
+    }
+};

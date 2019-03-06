@@ -1,0 +1,38 @@
+class RandomizedCollection {
+public:
+    /** Initialize your data structure here. */
+    RandomizedCollection() {
+        ;
+    }
+
+    /** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */
+    bool insert(int val) {
+        bool ret=1;
+        if(m.find(val)!=m.end()) ret=0;
+        m[val].push_back(v.size());
+        v.push_back(val);
+        return ret;
+    }
+
+    /** Removes a value from the collection. Returns true if the collection contained the specified element. */
+    bool remove(int val) {
+        if(m.find(val)==m.end()) return 0;
+        int b=v.back();
+        swap(v[m[val].back()],v.back());
+        swap(m[val].back(),m[b].back());
+        m[val].pop_back();
+        v.pop_back();
+        sort(m[b].begin(),m[b].end());
+        if(m[val].size()==0) m.erase(val);
+        return 1;
+    }
+
+    /** Get a random element from the collection. */
+    int getRandom() {
+        int index=random()%v.size();
+        return v[index];
+    }
+private:
+    vector<int> v;
+    unordered_map<int,vector<int>> m;
+};

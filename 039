@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<int> nums;
+        vector<vector<int>> res;
+        sort(candidates.begin(),candidates.end());
+        Solu(candidates,0,target,nums,res);
+        return res;
+    }
+private:
+    void Solu(vector<int>&candidates,int s,int target,vector<int>&nums,vector<vector<int>>&res)
+    {
+        if(s<0||s>=candidates.size()) return ;
+        if(target==0) { res.push_back(nums);return ; }
+        for(int i=s;i<candidates.size();i++)
+        {
+            if(target<candidates[i]) return ;
+            nums.push_back(candidates[i]);
+            Solu(candidates,i,target-candidates[i],nums,res);
+            nums.pop_back();
+        }
+        return ;
+    }
+};

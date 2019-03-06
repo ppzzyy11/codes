@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
+        unordered_map<string,int> rec;
+        vector<vector<int>> per(accounts.size(),vector<int>(0,0));
+
+        for(int i=0;i<accounts.size();i++)
+        {
+            int index=-1;
+            for(int j=1;j<accounts[i].size();j++)
+            {
+
+                if(rec.find(accounts[i][j])!=rec.end())
+                {
+                    if(index=-1){ per[rec[accounts[i][j]].push_back(i);
+                        index=rec[accounts[i][j];
+                    }else 
+                    {
+                        rec[index].push_back(rec[accounts[i][j]]);
+                    }
+                    rec[accounts[i][j]]=i;
+                }
+        }
+
+    }
+};
+
+int main()
+{

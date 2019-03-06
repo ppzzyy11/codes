@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+        if(nums.size()==1) return 0;
+        int times=1;
+        int s=0,e=nums[0];
+        while(e<nums.size()-1)
+        {
+            int Max;
+            for(int i=s;i<=e;i++)
+            {
+                Max=max(Max,i+nums[i]);
+                if(Max>nums.size()-2) break;
+            }
+            times++;
+            s++;
+            e=Max;
+        }
+        return times;
+    }
+};

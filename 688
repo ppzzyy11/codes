@@ -1,0 +1,35 @@
+class Solution {
+    public:
+        double knightProbability(int n, int K, int r, int c) {
+            N=n;
+            return Get(K,r,c);
+
+        }
+    private:
+        unordered_map<int,vector<vector<double>>> dp;
+        int N;
+        double Get(int K,int r,int c)
+        {
+            if(r<0||c<0||c>=N||r>=N) return 0;
+            if(K==0) return 1;
+            if(dp[K].size()==0) dp[K].resize(N,vector<double>(N,-1));
+            if(dp[K][r][c]!=-1) return dp[K][r][c];
+            double res=0;
+            res=(
+                    Get(K-1,r-2,c+1)+
+                    Get(K-1,r-1,c+2)+
+
+                    Get(K-1,r+1,c+2)+
+                    Get(K-1,r+2,c+1)+
+
+                    Get(K-1,r+2,c-1)+
+                    Get(K-1,r+1,c-2)+
+
+                    Get(K-1,r-2,c-1)+
+                    Get(K-1,r-1,c-2)+
+                    0
+                )/8;
+            dp[K][r][c]=res;
+            return res;
+        }
+};

@@ -1,0 +1,59 @@
+class Solution {
+public:
+    int shoppingOffers(vector<int>& price, vector<vector<int>>& special, vector<int>& needs) {
+        int index=getInt(needs);
+        if(index==-1) return -1;
+        if(index==0) return 0;
+        if(record[index]!=0) return record[index];
+
+        //int res=INT_MAX;
+        int res=0;
+
+        for(int i=0;i<needs.size();i++)
+        {
+            res+=needs[i]*price[i];
+        }
+        //for(int i=0;i<needs.size();i++)
+        //{
+            //needs[i]--;
+            //int tmp=-1;
+            //if(needs[i]>=0)
+                //tmp= shoppingOffers(price,special,needs);
+            //needs[i]++;
+            //if(tmp!=-1) res=min(res,tmp+price[i]);
+        //}
+        for(int i=0;i<special.size();i++)
+        {
+            bool flag=1;
+            for(int j=0;j<needs.size();j++)
+            {
+                needs[j]-=special[i][j];
+                if(needs[j]<0) flag=0;
+            }
+            int tmp=-1;
+            if(flag)
+                tmp=shoppingOffers(price,special,needs);
+            for(int j=0;j<needs.size();j++)
+            {
+                needs[j]+=special[i][j];
+            }
+            if(tmp!=-1) res=min(res,tmp+special[i][needs.size()]);
+        }
+
+
+        record[index]=res;
+        return res;
+    }
+private:
+    unordered_map<int,int> record;
+    int getInt(const vector<int>& needs)
+    {
+        int res=0;
+        for(int i=0;i<needs.size();i++)
+        {
+            if(needs[i]<0) return -1;
+            res=(res<<3)+needs[i];
+        }
+        return res;
+    }
+};

@@ -1,0 +1,114 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BinarySearchTree	AugmentedBinarySearchTree.cpp	/^        BinarySearchTree(void){;}$/;"	f	class:BinarySearchTree
+BinarySearchTree	AugmentedBinarySearchTree.cpp	/^BinarySearchTree::BinarySearchTree(const vector<int> in )$/;"	f	class:BinarySearchTree
+BinarySearchTree	AugmentedBinarySearchTree.cpp	/^class BinarySearchTree{$/;"	c	file:
+BinarySearchTree	BinarySearchTree.cpp	/^        BinarySearchTree(void){;}$/;"	f	class:BinarySearchTree
+BinarySearchTree	BinarySearchTree.cpp	/^BinarySearchTree::BinarySearchTree(const vector<int> in )$/;"	f	class:BinarySearchTree
+BinarySearchTree	BinarySearchTree.cpp	/^class BinarySearchTree{$/;"	c	file:
+BuildHelper	AugmentedBinarySearchTree.cpp	/^TreeNode* BinarySearchTree::BuildHelper(const vector<int>& in,int s,int e)$/;"	f	class:BinarySearchTree
+BuildHelper	BinarySearchTree.cpp	/^TreeNode* BinarySearchTree::BuildHelper(const vector<int>& in,int s,int e)$/;"	f	class:BinarySearchTree
+DEBUG	AugmentedBinarySearchTree.cpp	/^        const bool DEBUG=1;$/;"	m	class:BinarySearchTree	file:
+DEBUG	BinarySearchTree.cpp	/^        const bool DEBUG=1;$/;"	m	class:BinarySearchTree	file:
+InOrder	AugmentedBinarySearchTree.cpp	/^        void InOrder(void) const$/;"	f	class:BinarySearchTree
+InOrder	AugmentedBinarySearchTree.cpp	/^void BinarySearchTree::InOrder(TreeNode* root) const$/;"	f	class:BinarySearchTree
+InOrder	BinarySearchTree.cpp	/^        void InOrder(void) const$/;"	f	class:BinarySearchTree
+InOrder	BinarySearchTree.cpp	/^void BinarySearchTree::InOrder(TreeNode* root) const$/;"	f	class:BinarySearchTree
+Interval	main.cpp	/^    Interval() : start(0), end(0) {}$/;"	f	struct:Interval
+Interval	main.cpp	/^    Interval(int s, int e) : start(s), end(e) {}$/;"	f	struct:Interval
+Interval	main.cpp	/^struct Interval {$/;"	s	file:
+Interval	self_def_sort0.cpp	/^    Interval() : start(0), end(0) {}$/;"	f	struct:Interval
+Interval	self_def_sort0.cpp	/^    Interval(int s, int e) : start(s), end(e) {}$/;"	f	struct:Interval
+Interval	self_def_sort0.cpp	/^struct Interval {$/;"	s	file:
+LevelOrder	AugmentedBinarySearchTree.cpp	/^        void LevelOrder(void)$/;"	f	class:BinarySearchTree
+LevelOrder	AugmentedBinarySearchTree.cpp	/^void BinarySearchTree::LevelOrder(TreeNode* root) const$/;"	f	class:BinarySearchTree
+LevelOrder	BinarySearchTree.cpp	/^        void LevelOrder(void)$/;"	f	class:BinarySearchTree
+LevelOrder	BinarySearchTree.cpp	/^void BinarySearchTree::LevelOrder(TreeNode* root) const$/;"	f	class:BinarySearchTree
+ListNode	main.cpp	/^    ListNode(int x) : val(x), next(NULL) {}$/;"	f	struct:ListNode
+ListNode	main.cpp	/^struct ListNode {$/;"	s	file:
+ListNode	self_def_sort0.cpp	/^    ListNode(int x) : val(x), next(NULL) {}$/;"	f	struct:ListNode
+ListNode	self_def_sort0.cpp	/^struct ListNode {$/;"	s	file:
+MyCompare	self_def_sort0.cpp	/^struct MyCompare{$/;"	s	file:
+PostOrder	AugmentedBinarySearchTree.cpp	/^        void PostOrder(void) const$/;"	f	class:BinarySearchTree
+PostOrder	AugmentedBinarySearchTree.cpp	/^void BinarySearchTree::PostOrder(TreeNode* root) const$/;"	f	class:BinarySearchTree
+PostOrder	BinarySearchTree.cpp	/^        void PostOrder(void) const$/;"	f	class:BinarySearchTree
+PostOrder	BinarySearchTree.cpp	/^void BinarySearchTree::PostOrder(TreeNode* root) const$/;"	f	class:BinarySearchTree
+PreOrder	AugmentedBinarySearchTree.cpp	/^        void PreOrder(void) const$/;"	f	class:BinarySearchTree
+PreOrder	AugmentedBinarySearchTree.cpp	/^void BinarySearchTree::PreOrder(TreeNode* root) const$/;"	f	class:BinarySearchTree
+PreOrder	BinarySearchTree.cpp	/^        void PreOrder(void) const$/;"	f	class:BinarySearchTree
+PreOrder	BinarySearchTree.cpp	/^void BinarySearchTree::PreOrder(TreeNode* root) const$/;"	f	class:BinarySearchTree
+RandomListNode	main.cpp	/^    RandomListNode(int x) : label(x), next(NULL), random(NULL) {}$/;"	f	struct:RandomListNode
+RandomListNode	main.cpp	/^struct RandomListNode {$/;"	s	file:
+Solution	main.cpp	/^class Solution {$/;"	c	file:
+TreeNode	AugmentedBinarySearchTree.cpp	/^    TreeNode(int x):val(x),lcount(0),left(NULL),right(NULL){}$/;"	f	struct:TreeNode
+TreeNode	AugmentedBinarySearchTree.cpp	/^struct TreeNode {$/;"	s	file:
+TreeNode	BinarySearchTree.cpp	/^    TreeNode(int x):val(x),left(NULL),right(NULL){}$/;"	f	struct:TreeNode
+TreeNode	BinarySearchTree.cpp	/^struct TreeNode {$/;"	s	file:
+TreeNode	main.cpp	/^    TreeNode(int x) : val(x), left(NULL), right(NULL) {}$/;"	f	struct:TreeNode
+TreeNode	main.cpp	/^struct TreeNode {$/;"	s	file:
+TreeNode	self_def_sort0.cpp	/^    TreeNode(int x) : val(x), left(NULL), right(NULL) {}$/;"	f	struct:TreeNode
+TreeNode	self_def_sort0.cpp	/^struct TreeNode {$/;"	s	file:
+countSmaller	main.cpp	/^    vector<int> countSmaller(vector<int>& nums) {$/;"	f	class:Solution
+create_symlinks	spf13-vim.sh	/^create_symlinks() {$/;"	f
+debug	spf13-vim.sh	/^debug() {$/;"	f
+del	AugmentedBinarySearchTree.cpp	/^        TreeNode* del(const int key){if(DEBUG) cout<<"del"<<key<<endl;return root=delHelper(root,key);}$/;"	f	class:BinarySearchTree
+del	BinarySearchTree.cpp	/^        TreeNode* del(const int key){if(DEBUG) cout<<"del"<<key<<endl;return root=delHelper(root,key);}$/;"	f	class:BinarySearchTree
+delHelper	AugmentedBinarySearchTree.cpp	/^TreeNode* BinarySearchTree::delHelper(TreeNode* root,const int key)$/;"	f	class:BinarySearchTree
+delHelper	BinarySearchTree.cpp	/^TreeNode* BinarySearchTree::delHelper(TreeNode* root,const int key)$/;"	f	class:BinarySearchTree
+do_backup	spf13-vim.sh	/^do_backup() {$/;"	f
+end	main.cpp	/^    int end;$/;"	m	struct:Interval	file:
+end	self_def_sort0.cpp	/^    int end;$/;"	m	struct:Interval	file:
+error	spf13-vim.sh	/^error() {$/;"	f
+insert	AugmentedBinarySearchTree.cpp	/^TreeNode* BinarySearchTree::insert(const int key)$/;"	f	class:BinarySearchTree
+insert	BinarySearchTree.cpp	/^TreeNode* BinarySearchTree::insert(const int key)$/;"	f	class:BinarySearchTree
+label	main.cpp	/^    int label;$/;"	m	struct:RandomListNode	file:
+lcount	AugmentedBinarySearchTree.cpp	/^    int lcount;$/;"	m	struct:TreeNode	file:
+left	AugmentedBinarySearchTree.cpp	/^    TreeNode* left;$/;"	m	struct:TreeNode	file:
+left	BinarySearchTree.cpp	/^    TreeNode* left;$/;"	m	struct:TreeNode	file:
+left	main.cpp	/^    TreeNode *left;$/;"	m	struct:TreeNode	file:
+left	self_def_sort0.cpp	/^    TreeNode *left;$/;"	m	struct:TreeNode	file:
+leftMost	AugmentedBinarySearchTree.cpp	/^        TreeNode* leftMost(TreeNode* node)$/;"	f	class:BinarySearchTree
+leftMost	BinarySearchTree.cpp	/^        TreeNode* leftMost(TreeNode* node)$/;"	f	class:BinarySearchTree
+lnif	spf13-vim.sh	/^lnif() {$/;"	f
+main	AugmentedBinarySearchTree.cpp	/^int main()$/;"	f
+main	BinarySearchTree.cpp	/^int main()$/;"	f
+main	main.cpp	/^int main()$/;"	f
+main	self_def_sort0.cpp	/^int main()$/;"	f
+msg	spf13-vim.sh	/^msg() {$/;"	f
+next	main.cpp	/^    ListNode *next;$/;"	m	struct:ListNode	file:
+next	main.cpp	/^    RandomListNode *next, *random;$/;"	m	struct:RandomListNode	file:
+next	self_def_sort0.cpp	/^    ListNode *next;$/;"	m	struct:ListNode	file:
+operator ()	self_def_sort0.cpp	/^    inline bool operator() (const int& a, const int& b)\/\/a is before b?$/;"	f	struct:MyCompare
+operator <<	AugmentedBinarySearchTree.cpp	/^        friend std::ostream& operator<<(std::ostream& stream,const BinarySearchTree& BST)$/;"	f	class:BinarySearchTree
+operator <<	BinarySearchTree.cpp	/^        friend std::ostream& operator<<(std::ostream& stream,const BinarySearchTree& BST)$/;"	f	class:BinarySearchTree
+output	self_def_sort0.cpp	/^void output(const vector<int> & arr)$/;"	f
+program_exists	spf13-vim.sh	/^program_exists() {$/;"	f
+program_must_exist	spf13-vim.sh	/^program_must_exist() {$/;"	f
+random	main.cpp	/^    RandomListNode *next, *random;$/;"	m	struct:RandomListNode	file:
+right	AugmentedBinarySearchTree.cpp	/^    TreeNode* right;$/;"	m	struct:TreeNode	file:
+right	BinarySearchTree.cpp	/^    TreeNode* right;$/;"	m	struct:TreeNode	file:
+right	main.cpp	/^    TreeNode *right;$/;"	m	struct:TreeNode	file:
+right	self_def_sort0.cpp	/^    TreeNode *right;$/;"	m	struct:TreeNode	file:
+root	AugmentedBinarySearchTree.cpp	/^        TreeNode* root=NULL;$/;"	m	class:BinarySearchTree	file:
+root	BinarySearchTree.cpp	/^        TreeNode* root=NULL;$/;"	m	class:BinarySearchTree	file:
+searchKey	AugmentedBinarySearchTree.cpp	/^TreeNode* BinarySearchTree:: searchKey(const int key) const$/;"	f	class:BinarySearchTree
+searchKey	BinarySearchTree.cpp	/^TreeNode* BinarySearchTree:: searchKey(const int key) const$/;"	f	class:BinarySearchTree
+setup_fork_mode	spf13-vim.sh	/^setup_fork_mode() {$/;"	f
+setup_vundle	spf13-vim.sh	/^setup_vundle() {$/;"	f
+start	main.cpp	/^    int start;$/;"	m	struct:Interval	file:
+start	self_def_sort0.cpp	/^    int start;$/;"	m	struct:Interval	file:
+success	spf13-vim.sh	/^success() {$/;"	f
+sync_repo	spf13-vim.sh	/^sync_repo() {$/;"	f
+val	AugmentedBinarySearchTree.cpp	/^    int val;$/;"	m	struct:TreeNode	file:
+val	BinarySearchTree.cpp	/^    int val;$/;"	m	struct:TreeNode	file:
+val	main.cpp	/^    int val;$/;"	m	struct:ListNode	file:
+val	main.cpp	/^    int val;$/;"	m	struct:TreeNode	file:
+val	self_def_sort0.cpp	/^    int val;$/;"	m	struct:ListNode	file:
+val	self_def_sort0.cpp	/^    int val;$/;"	m	struct:TreeNode	file:
+variable_set	spf13-vim.sh	/^variable_set() {$/;"	f
+~BinarySearchTree	AugmentedBinarySearchTree.cpp	/^BinarySearchTree::~BinarySearchTree()$/;"	f	class:BinarySearchTree
+~BinarySearchTree	BinarySearchTree.cpp	/^BinarySearchTree::~BinarySearchTree()$/;"	f	class:BinarySearchTree

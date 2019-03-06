@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        if(s.size()==0) return 0;
+        int len=0;
+        int Res=INT_MIN;
+        vector<int> pos(256,-1);
+        for(int i=0;i<s.size();i++)
+        {
+            if(pos[s[i]]==-1)
+            {
+                len++;
+                pos[s[i]]=i;
+            }else
+            {
+                Res=max(Res,len);
+                len=min(i-pos[s[i]],len+1);
+                pos[s[i]]=i;
+            }
+        }
+        Res=max(Res,len);
+        return Res;
+    }
+};

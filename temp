@@ -1,0 +1,309 @@
+##Serialize and Deserialize an N-ary Tree
+4
+Given an N-ary tree where every node has at-most N children. How to serialize and deserialze it? Serialization is to store tree in a file so that it can be later restored. The structure of tree must be maintained. Deserialization is reading tree back from file.
+
+This post is mainly an extension of below post. 
+Serialize and Deserialize a Binary Tree
+
+In an N-ary tree, there are no designated left and right children. An N-ary tree is represented by storing an array or list of child pointers with every node.
+The idea is to store an ‘end of children’ marker with every node. The following diagram shows serialization where ‘)’ is used as end of children marker. The diagram is taken from here.
+serializeNaryTree
+
+
+Serialize的关键点在于)的输出在Recur中的位置
+
+这个问题stack很关键
+ABE)FK)))C)DG)H)I)J)))
+
+Deserialize 每遇见一个)就pop一次,遇到的新就插入到stack的top的child中
+
+##Check if a given graph is tree or not
+3.1
+Write a function that returns true if a given undirected graph is tree and false otherwise. For example, the following graph is a tree.
+
+Tree有两个性质:
+1.连同的
+2.没有环
+
+
+##Print nodes between two given level numbers of a binary tree
+2.6
+Given a binary tree and two level numbers ‘low’ and ‘high’, print nodes from level low to level high.
+
+For example consider the binary tree given in below diagram. 
+
+Input: Root of below tree, low = 2, high = 4
+
+Output:
+8 22
+4 12
+10 14
+BST_LCA
+
+A Simple Method is to first write a recursive function that prints nodes of a given level number. Then call recursive function in a loop from low to high. Time complexity of this method is O(n2)
+We can print nodes in O(n) time using queue based iterative level order traversal. The idea is to do simple queue based level order traversal. While doing inorder traversal, add a marker node at the end. Whenever we see a marker node, we increase level number. If level number is between low and high, then print nodes.
+
+
+
+
+
+##Find Height of Binary Tree represented by Parent array
+3.6
+A given array represents a tree in such a way that the array value gives the parent node of that particular index. The value of the root node index would always be -1. Find the height of the tree.
+Height of a Binary Tree is number of nodes on the path from root to the deepest leaf node, the number includes both root and leaf.
+
+Input: parent[] = {1 5 5 2 2 -1 3}
+Output: 4
+The given array represents following Binary Tree 
+         5
+        /  \
+       1    2
+      /    / \
+     0    3   4
+         /
+        6 
+
+
+Input: parent[] = {-1, 0, 0, 1, 1, 3, 5};
+Output: 5
+The given array represents following Binary Tree 
+         0
+       /   \
+      1     2
+     / \
+    3   4
+   /
+  5 
+ /
+6
+
+这个题目要避免重复计算,DP问题,当前坐标下节点及其祖先的height都要存储下来
+
+
+An efficient solution can solve the above problem in O(n) time. The idea is to first calculate depth of every node and store in an array depth[]. Once we have depths of all nodes, we return maximum of all depths.
+1) Find depth of all nodes and fill in an auxiliary array depth[].
+2) Return maximum value in depth[].
+
+Following are steps to find depth of a node at index i.
+1) If it is root, depth[i] is 1.
+2) If depth of parent[i] is evaluated, depth[i] is depth[parent[i]] + 1.
+3) If depth of parent[i] is not evaluated, recur for parent and assign depth[i] as depth[parent[i]] + 1 (same as above).
+
+
+
+##Minimum no. of iterations to pass information to all nodes in the tree
+这个分析的思路和过程是我需要学习的东西
+4.6
+Given a very large n-ary tree. Where the root node has some information which it wants to pass to all of its children down to the leaves with the constraint that it can only pass the information to one of its children at a time (take it as one iteration).
+
+Now in the next iteration the child node can transfer that information to only one of its children and at the same time instance the child’s parent i.e. root can pass the info to one of its remaining children. Continuing in this way we have to find the minimum no of iterations required to pass the information to all nodes in the tree.
+
+Minimum no of iterations for tree below is 6. The root A first passes information to B. In next iteration, A passes information to E and B passes information to H and so on.
+amazon
+
+We strongly recommend to minimize the browser and try this yourself first.
+
+This can be done using Post Order Traversal. The idea is to consider height and children count on each and every node.
+If a child node i takes ci iterations to pass info below its subtree, then its parent will take (ci + 1) iterations to pass info to subtree rooted at that child i.
+If parent has more children, it will pass info to them in subsequent iterations. Let’s say children of a parent takes c1, c2, c3, c4, …, cn iterations to pass info in their own subtree, Now parent has to pass info to these n children one by one in n iterations. If parent picks child i in ith iteration, then parent will take (i + ci) iterations to pass info to child i and all it’s subtree.
+In any iteration, when parent passes info a child i+1, children (1 to i) which got info from parent already in previous iterations, will pass info to further down in subsequent iterations, if any child (1 to i) has its own child further down.
+To pass info to whole tree in minimum iterations, it needs to be made sure that bandwidth is utilized as efficiently as possible (i.e. maximum passable no of nodes should pass info further down in any iteration)
+The best possible scenario would be that in nth iteration, n different nodes pass info to their child.
+Nodes with height = 0: (Trivial case) Leaf node has no children (no information passing needed), so no of iterations would be ZERO.
+Nodes with height = 1: Here node has to pass info to all the children one by one (all children are leaf node, so no more information passing further down). Since all children are leaf, node can pass info to any child in any order (pick any child who didn’t receive the info yet). One iteration needed for each child and so no of iterations would be no of children.So node with height 1 with n children will take n iterations.
+Take a counter initialized with ZERO, loop through all children and keep incrementing counter.
+Nodes with height > 1: Let’s assume that there are n children (1 to n) of a node and minimum no iterations for all n children are c1, c2, …., cn.
+To make sure maximum no of nodes participate in info passing in any iteration, parent should 1st pass info to that child who will take maximum iteration to pass info further down in subsequent iterations. i.e. in any iteration, parent should choose the child who takes maximum iteration later on. It can be thought of as a greedy approach where parent choose that child 1st, who needs maximum no of iterations so that all subsequent iterations can be utilized efficiently.
+If parent goes in any other fashion, then in the end, there could be some nodes which are done quite early, sitting idle and so bandwidth is not utilized efficiently in further iterations.
+If there are two children i and j with minimum iterations ci and cj where ci > cj, then If parent picks child j 1st then no of iterations needed by parent to pass info to both children and their subtree would be:max (1 + cj, 2 + ci) = 2 + ci
+If parent picks child i 1st then no of iterations needed by parent to pass info to both children and their subtree would be: max(1 + ci, 2 + cj) = 1 + ci (So picking ci gives better result than picking cj)
+
+This tells that parent should always choose child i with max ci value in any iteration.
+SO here greedy approach is:
+sort all ci values decreasing order,
+let’s say after sorting, values are c1 > c2 > c3 > …. > cn
+take a counter c, set c = 1 + c1 (for child with maximum no of iterations)
+for all children i from 2 to n, c = c + 1 + ci
+then total no of iterations needed by parent is max(n, c)
+
+Let minItr(A) be the minimum iteration needed to pass info from node A to it’s all the sub-tree. Let child(A) be the count of all children for node A. So recursive relation would be:
+
+1. Get minItr(B) of all children (B) of a node (A)
+2. Sort all minItr(B) in descending order
+3. Get minItr of A based on all minItr(B)
+    minItr(A) = child(A)
+    For children B from i = 0 to child(A)
+             minItr(A) = max ( minItr(A), minItr(B) + i + 1)
+
+Base cases would be:
+If node is leaf, minItr = 0
+If node's height is 1, minItr = children count 
+
+##Check if two nodes are cousins in a Binary Tree
+2.6
+Given the binary Tree and the two nodes say ‘a’ and ‘b’, determine whether the two nodes are cousins of each other or not.
+
+Two nodes are cousins of each other if they are at same level and have different parents.
+
+Example
+
+     6
+   /   \
+  3     5
+ / \   / \
+7   8 1   3
+Say two node be 7 and 1, result is TRUE.
+Say two nodes are 3 and 5, result is FALSE.
+Say two nodes are 7 and 5, result is FALSE.
+
+两点:
+1.same level O(n)
+2.different parents O(n)
+
+或者Lowest Common Ancestor
+对LCA进行分类和处理
+
+##Find Minimum Depth of a Binary Tree
+2.2
+Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from root node down to the nearest leaf node.
+
+For example, minimum height of below Binary Tree is 2.
+Example Tree
+
+Note that the path must end on a leaf node. For example, minimum height of below Binary Tree is also 2.
+
+          10
+        /    
+      5  
+
+
+The idea is to traverse the given Binary Tree. For every node, check if it is a leaf node. If yes, then return 1. If not leaf node then if left subtree is NULL, then recur for right subtree. And if right subtree is NULL, then recur for left subtree. If both left and right subtrees are not NULL, then take the minimum of two heights.
+
+##Maximum Path Sum in a Binary Tree
+3.8
+Given a binary tree, find the maximum path sum. The path may start and end at any node in the tree.
+
+Example:
+
+Input: Root of below tree
+       1
+      / \
+     2   3
+Output: 6
+
+See below diagram for another example.
+1+2+3
+
+
+对于过每个node的Max Sum Path分情况
+For each node there can be four ways that the max path goes through the node:
+1. Node only
+2. Max path through Left Child + Node
+3. Max path through Right Child + Node
+4. Max path through Left Child + Node + Max path through Right Child
+
+##Expression Tree
+2.6
+Expression tree is a binary tree in which each internal node corresponds to operator and each leaf node corresponds to operand so for example expression tree for 3 + ((5+9)*2) would be:
+
+expressiontre
+
+Inorder traversal of expression tree produces infix version of given postfix expression (same with preorder traversal it gives prefix expression)
+
+Evaluating the expression represented by expression tree:
+
+Let t be the expression tree
+If  t is not null then
+      If t.value is operand then  
+                Return  t.value
+      A = solve(t.left)
+      B = solve(t.right)
+ 
+      // calculate applies operator 't.value' 
+      // on A and B, and returns value
+      Return calculate(A, B, t.value)   
+Construction of Expression Tree:
+Now For constructing expression tree we use a stack. We loop through input expression and do following for every character.
+1)	If character is operand push that into stack
+2)	If character is operator pop two values from stack make them its child and push current node again.
+At the end only element of stack will be root of expression tree.
+
+##Iterative Search for a key ‘x’ in Binary Tree
+1.8
+Given a Binary Tree and a key to be searched in it, write an iterative method that returns true if key is present in Binary Tree, else false.
+
+For example, in the following tree, if the searched key is 6, then function should return true and if the searched key is 12, then function should return false.
+
+
+##Find maximum (or minimum) in Binary Tree
+1.9
+Given a Binary Tree, find maximum(or minimum) element in it. For example, maximum in the following Binary Tree is 11.
+
+tree1
+
+Recommended: Please solve it on “PRACTICE” first, before moving on to the solution.
+
+In Binary Search Tree, we can find maximum by traversing right pointers until we reach rightmost node. But in Binary Tree, we must visit every node to figure out maximum. So the idea is to traverse the given tree and for every node return maximum of 3 values.
+1) Node’s data.
+2) Maximum in node’s left subtree.
+3) Maximum in node’s right subtree.
+
+
+##Find sum of all left leaves in a given Binary Tree
+2.3
+Given a Binary Tree, find sum of all left leaves in it. For example, sum of all left leaves in below Binary Tree is 5+23+50 = 78.
+
+tree
+
+
+
+##Remove nodes on root to leaf paths of length < K
+3.3
+Given a Binary Tree and a number k, remove all nodes that lie only on root to leaf path(s) of length smaller than k. If a node X lies on multiple root-to-leaf paths and if any of the paths has path length >= k, then X is not deleted from Binary Tree. In other words a node is deleted if all paths going through it have lengths smaller than k.
+
+Consider the following example Binary Tree
+
+               1
+           /      \
+         2          3
+      /     \         \
+    4         5        6
+  /                   /
+ 7                   8 
+Input: Root of above Binary Tree
+       k = 4
+
+Output: The tree should be changed to following  
+           1
+        /     \
+      2          3
+     /             \
+   4                 6
+ /                  /
+7                  8
+There are 3 paths 
+i) 1->2->4->7      path length = 4
+ii) 1->2->5        path length = 3
+iii) 1->3->6->8    path length = 4 
+There is only one path " 1->2->5 " of length smaller than 4.  
+The node 5 is the only node that lies only on this path, so 
+node 5 is removed.
+Nodes 2 and 1 are not removed as they are parts of other paths
+of length 4 as well.
+
+If k is 5 or greater than 5, then whole tree is deleted. 
+
+If k is 3 or less than 3, then nothing is deleted.
+
+简单方法就是第一遍traversal,第二遍delete
+
+
+也可以边遍历边删,注意,只删度为1的节点,这样可以保证不删错
+
+
+The idea here is to use post order traversal of the tree. Before removing a node we need to check that all the children of that node in the shorter path are already removed.
+There are 2 cases:
+i) This node becomes a leaf node in which case it needs to be deleted.
+ii) This node has other child on a path with path length >= k. In that case it needs not to be deleted.
+
+

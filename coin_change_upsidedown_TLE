@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        sort(coins.begin(),coins.end());
+        vector<int> dp(amount+1,-1);
+        dp[0]=0;
+        return Recur(coins,dp,amount);
+    }
+private:
+    int Recur(const vector<int>& coins,vector<int>& dp,int target)
+    {
+       // cout<<target<<endl;
+        if(target<0) return -1;
+        if(dp[target]!=-1) return dp[target];
+        int Min=INT_MAX;
+        for(int i=0;i<coins.size();i++)
+        {
+            if(coins[i]>target) break;
+            int tmp=Recur(coins,dp,target-coins[i]);
+            if(tmp!=-1)
+            Min=min(Min,tmp);
+        }
+        //cout<<Min<<" "<<target<<endl;
+        if(Min==INT_MAX) return -1;
+        dp[target]=Min+1;
+        return dp[target];
+    }
+};

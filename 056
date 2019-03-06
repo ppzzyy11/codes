@@ -1,0 +1,24 @@
+bool myfunction(Interval A,Interval B) {
+    return A.start<B.start;
+}
+class Solution {
+public:
+    vector<Interval> merge(vector<Interval>& intervals) {
+        vector<Interval> res;
+        sort(intervals.begin(),intervals.end(),myfunction);
+        if(intervals.size()==0) return res;
+        int pre_end=INT_MIN;
+        for(int i=0;i<intervals.size();i++)
+        {
+            if(intervals[i].start>pre_end)
+            {res.push_back(intervals[i]);}
+           else
+           {
+                res.back().end=max(pre_end,intervals[i].end);
+            }
+            pre_end=res.back().end;
+            cout<<i<<" "<<pre_end<<endl;
+        }
+        return res;
+    }
+};
